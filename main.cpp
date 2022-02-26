@@ -68,32 +68,38 @@ int main(int argv, char** argc){
   
   //set to false if they don't have duplicate cards anymore (we would then print out there decks)
   bool duplicateCards = true;
-  Node* card;
+  Node card;
+  cout << "OUTSIDE WHILE LOOP" << endl;
   while (duplicateCards){
-    //alice
+    cout << "Inside WHILE LOOP" << endl;
     card = aliceBST.ForwardInOrderSearch(bobBST);
-    if ((card->suit + card->value) != 0){
-      cout << "Alice picked matching card " << card->suit << " " << card->value << endl;
-      aliceBST.remove(card->suit, card->value);
-      bobBST.remove(card->suit, card->value);
+    cout << "SDLFJ" << endl;
+    if ((card.suit + card.value) != 0){
+      cout << "Alice picked matching card " << card.suit << " " << card.value << endl;
+      aliceBST.remove(card.suit, card.value);
+      bobBST.remove(card.suit, card.value);
     }
     else{
+      cout << "INSIDE FIRST ELSE" << endl;
       duplicateCards = false;
       break;
     }
 
     card = bobBST.BackwardInOrderSearch(aliceBST);
-    if ((card->suit + card->value) != 0){
-      cout << "Bob picked matching card " << card->suit << " " << card->value << endl;
-      aliceBST.remove(card->suit, card->value);
-      bobBST.remove(card->suit, card->value);
+    cout << card.suit << " " << card.value << endl;
+    if ((card.suit + card.value) != 0){
+      cout << "Bob picked matching card " << card.suit << " " << card.value << endl;
+      aliceBST.remove(card.suit, card.value);
+      bobBST.remove(card.suit, card.value);
     }
     else{
+      cout << "INSIDE SECOND ELSE" << endl;
       duplicateCards = false;
       break;
     }
     //iterate from least to greatest in alice's hand, and for every card in alice's hand, use the find function to see if it's in
   }
+  cout << "AFTER WHILE LOOP" << endl;
   cout << endl;
 
   cout << "Alice's cards:" << endl;

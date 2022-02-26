@@ -54,32 +54,38 @@ Node* CardBST::getMax(){
     return nullptr;
 }
 
-Node* CardBST::ForwardInOrderSearch(CardBST &hand){
+Node CardBST::ForwardInOrderSearch(CardBST &hand){
     return ForwardInOrderSearchHelper(this->getMin(), hand);
 }
-Node* CardBST::ForwardInOrderSearchHelper(Node* min, CardBST &hand){
-    // if (min->suit == 0 && min->value == 0){
-    //     return Node();
-    // }
+
+Node CardBST::ForwardInOrderSearchHelper(Node* min, CardBST &hand){
     if (min){
+        if (min->suit == 0 && min->value == 0){
+            return Node();
+        }
         if (hand.find(min->suit, min->value)){
-            return min;
+            return *min;
         }
         return this->ForwardInOrderSearchHelper(getSuccessorNode(min->suit, min->value), hand);
     }
-
+    return Node();
 }
-Node* CardBST::BackwardInOrderSearch(CardBST &hand){
+
+Node CardBST::BackwardInOrderSearch(CardBST &hand){
     return BackwardInOrderSearchHelper(this->getMax(), hand);
 }
 
-Node* CardBST::BackwardInOrderSearchHelper(Node* max, CardBST &hand){
+Node CardBST::BackwardInOrderSearchHelper(Node* max, CardBST &hand){
     if (max){
+        if (max->suit == 0 && max->value == 0){
+            return Node();
+        }
         if (hand.find(max->suit, max->value)){
-            return max;
+            return *max;
         }
         return this->BackwardInOrderSearchHelper(getPredecessorNode(max->suit, max->value), hand);
     }
+    return Node();
 }
 
 Node* getNodeFor(int suit, int value, Node* n){
@@ -395,19 +401,11 @@ Node* CardBST::getSuccessorNode(char suit, char value) const{
 //         return true;
 //     }
 //     else if (p->left && p->right){
-//         Node* suc = getSuccessorNode(suit, value);
-//         Card sucVal = suc->info;
-//         remove(suc->suit, suc->value);
-//         p->info = sucVal;
-//         return true;
+//         Node* suc = getSuccessorNode(value);
 
-//         Node* successor = getSuccessorNode(suit, value);
- 
-//         int val = successor->info;
- 
-//         /* IntBst::*/remove(successor->info);
- 
-//         p->info = val;
+//         Card sucVal = suc->info;
+//         remove(suc->info);
+//         p->info = sucVal;
 //         return true;
 //     }
 //     else{
@@ -514,7 +512,7 @@ bool CardBST::remove(char suit, char value){
             //and then we're pointing the removeNode to the successorNode
             //then we update the parent node of the successorNode to null (based on whether it's a left/right child)
             //then we delete the successorNode
-            Node* successor = getSuccessorNode(removeNode->suit, removeNode->value);
+            Node* successor = getSuccessorNode(intSuitToChar(removeNode->suit), intValueToChar(removeNode->value));
 
             if (successor){
                 removeNode->suit = successor->suit;
@@ -529,6 +527,20 @@ bool CardBST::remove(char suit, char value){
                 }
             }
             delete removeNode;
+
+        
+            // Node* successor = getSuccessorNode(intSuitToChar(removeNode->suit), intValueToChar(removeNode->value));
+
+            // Card sucVal = suc->info;
+            // remove(suc->info);
+            // p->info = sucVal;
+            // return true;
+        
+
+
+
+
+
         }
         return true;
     }

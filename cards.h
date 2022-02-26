@@ -82,10 +82,10 @@ class CardBST{
       Node* getMinHelper(Node* n);
       Node* getMaxHelper(Node* n);
 
-      Node* ForwardInOrderSearch(CardBST &hand);
-      Node* ForwardInOrderSearchHelper(Node* min, CardBST &hand);
-      Node* BackwardInOrderSearch(CardBST &hand);
-      Node* BackwardInOrderSearchHelper(Node* max, CardBST &hand);
+      Node ForwardInOrderSearch(CardBST &hand);
+      Node ForwardInOrderSearchHelper(Node* min, CardBST &hand);
+      Node BackwardInOrderSearch(CardBST &hand);
+      Node BackwardInOrderSearchHelper(Node* max, CardBST &hand);
 
    private:
       Node* root;
