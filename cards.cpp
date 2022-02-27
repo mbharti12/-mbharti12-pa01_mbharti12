@@ -63,19 +63,12 @@ Node CardBST::ForwardInOrderSearch(CardBST &hand){
 
 Node CardBST::ForwardInOrderSearchHelper(Node* min, CardBST &hand){
     if (min){
-        //cout << "start" << endl;
-        //min->printNode();
-        //seg fault here, so min probably doesn't point to anything (nullptr)
         if (min->suit == 0 && min->value == 0){
-            //cout << "SE:KGH" << endl;
             return Node();
         }
-        //cout << "middle" << endl;
         if (hand.find(intSuitToChar(min->suit), intValueToChar(min->value))){
             return *min;
         }
-        //cout << getSuccessorNode(intSuitToChar(min->suit), intValueToChar(min->value)) << endl;
-        //cout << "end" << endl;
         return this->ForwardInOrderSearchHelper(getSuccessorNode(intSuitToChar(min->suit), intValueToChar(min->value)), hand);
     }
     return Node();
