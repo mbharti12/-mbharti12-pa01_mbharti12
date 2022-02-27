@@ -85,8 +85,10 @@ int main(int argv, char** argc){
     if ((card.suit + card.value) != 0){
       cout << "Alice picked matching card ";
       card.printNode();
-      aliceBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
-      bobBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+      if (aliceBST.find(card.suit, card.value) && bobBST.find(card.suit, card.value)){
+        aliceBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+        bobBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+      }
       //cout << "after remove" << endl;
     }
     else{
@@ -100,8 +102,10 @@ int main(int argv, char** argc){
     if ((card.suit + card.value) != 0){
       cout << "Bob picked matching card ";
       card.printNode();
-      aliceBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
-      bobBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+      if (aliceBST.find(card.suit, card.value) && bobBST.find(card.suit, card.value)){
+        aliceBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+        bobBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+      }
     }
     else{
       //cout << "INSIDE SECOND ELSE" << endl;
