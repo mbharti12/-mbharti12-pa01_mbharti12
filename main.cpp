@@ -119,7 +119,7 @@ int main(int argv, char** argc){
 
   cout << "Bob's cards:" << endl;
   bobBST.printLeastToGreatest();
-  cout << endl;
+  //cout << endl;
 
   return 0;
 }
