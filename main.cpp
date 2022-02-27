@@ -1,5 +1,6 @@
 #include "cards.h"
-#include "moreFuncs.cpp"
+#include "moreFuncs.h"
+//#include "moreFuncs.cpp"
 
 #include <iostream>
 #include <fstream>
