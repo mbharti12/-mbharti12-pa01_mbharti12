@@ -2,7 +2,7 @@
 #also have to compile the game itself
 CXX_FLAG = --std=c++11 -g
 
-all: clean tests ./tests
+all: game
 
 game: main.o cards.o utility.o
 	g++ $(CXX_FLAG) -o game main.o cards.o utility.o
