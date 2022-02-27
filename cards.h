@@ -22,19 +22,18 @@ class Node{
       //and stores them with corresponding integers
       //if i defined a dictionary with corresponding character values pairs, that would be helpful
       
-      Node(){
-         suit = 0;
-         value = 0;
-      }
+      Node();
       //not sure if the member functions defined for CardBST (charSuitToInt and charValueToInt) can be used
       //if not it's fine, although it's not the most efficient thing
       Node(const char suit, const char value);
       Node(const int suit, const int value);
-      bool operator<(Node*& n);   
-      bool operator==(Node*& n);
-      bool operator>(Node*& n);
+      bool operator<(Node& n);   
+      bool operator==(Node& n);
+      bool operator>(Node& n);
       void setSuit(const char suit);
       void setValue(const char value);
+      void setSuit(const int suit);
+      void setValue(const int value);
       void printNode() const;
 
 };
@@ -56,10 +55,12 @@ class CardBST{
       Node* getSuccessorNode(char suit, char value) const;
 
       bool insert(char suit, char value); // return false if the value already exists
-      bool insert(int suit, int value, Node*& n);
+      //bool insert(int suit, int value);
+      bool insert(Node insertNode, Node*& n);
       //bool insert(int suit, int value, Node *n);
       bool remove(char suit, char value);
       bool find(char suit, char value) const;
+      bool find(int suit, int value) const;
       //make sure that this is the proper syntax (for a Node* return type)
       //CardBST::Node* getNodeFor(int suit, int value, Node* n) const;
       //Node* getPredecessorNode(char suit, char value) const;

@@ -1,4 +1,6 @@
 #include "cards.h"
+#include "moreFuncs.cpp"
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -66,40 +68,48 @@ int main(int argv, char** argc){
   //cout << "AFTER READ" << endl;
   //IMPLEMENT THE GAME ITSELF (SHOULDNT TAKE TOO LONG, ASSUMING THAT THE BST FUNCTIONS WORK)
   
+  //aliceBST.printGreatestToLeast();
+  //cout << endl;
+  //bobBST.printGreatestToLeast();
+
   //set to false if they don't have duplicate cards anymore (we would then print out there decks)
   bool duplicateCards = true;
   Node card;
-  cout << "OUTSIDE WHILE LOOP" << endl;
+  //cout << "OUTSIDE WHILE LOOP" << endl;
   while (duplicateCards){
-    cout << "Inside WHILE LOOP" << endl;
+    //cout << "Inside WHILE LOOP" << endl;
     card = aliceBST.ForwardInOrderSearch(bobBST);
-    cout << "SDLFJ" << endl;
+    //cout << "SDLFJ" << endl;
+    //cout << card.suit << " " << card.value << endl;
     if ((card.suit + card.value) != 0){
-      cout << "Alice picked matching card " << card.suit << " " << card.value << endl;
-      aliceBST.remove(card.suit, card.value);
-      bobBST.remove(card.suit, card.value);
+      cout << "Alice picked matching card ";
+      card.printNode();
+      aliceBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+      bobBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+      //cout << "after remove" << endl;
     }
     else{
-      cout << "INSIDE FIRST ELSE" << endl;
+      //cout << "INSIDE FIRST ELSE" << endl;
       duplicateCards = false;
       break;
     }
 
     card = bobBST.BackwardInOrderSearch(aliceBST);
-    cout << card.suit << " " << card.value << endl;
+    //cout << card.suit << " " << card.value << endl;
     if ((card.suit + card.value) != 0){
-      cout << "Bob picked matching card " << card.suit << " " << card.value << endl;
-      aliceBST.remove(card.suit, card.value);
-      bobBST.remove(card.suit, card.value);
+      cout << "Bob picked matching card ";
+      card.printNode();
+      aliceBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
+      bobBST.remove(intSuitToChar(card.suit), intValueToChar(card.value));
     }
     else{
-      cout << "INSIDE SECOND ELSE" << endl;
+      //cout << "INSIDE SECOND ELSE" << endl;
       duplicateCards = false;
       break;
     }
     //iterate from least to greatest in alice's hand, and for every card in alice's hand, use the find function to see if it's in
   }
-  cout << "AFTER WHILE LOOP" << endl;
+  //cout << "AFTER WHILE LOOP" << endl;
   cout << endl;
 
   cout << "Alice's cards:" << endl;
