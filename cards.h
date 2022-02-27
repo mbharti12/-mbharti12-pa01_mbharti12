@@ -1,5 +1,3 @@
-//cards.h
-
 #ifndef CARDS_H
 #define CARDS_H
 

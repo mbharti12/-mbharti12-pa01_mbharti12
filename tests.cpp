@@ -1,4 +1,3 @@
-
 #include "cards.h"
 
 #include <fstream>
