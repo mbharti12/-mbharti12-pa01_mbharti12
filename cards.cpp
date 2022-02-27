@@ -2,7 +2,7 @@
 //Authors: Your name and your partner's name
 //Implementation of the classes defined in cards.h
 #include "cards.h"
-#include "moreFuncs.h"
+#include "utility.h"
 #include <iostream>
 // using std::cout;
 // using std::endl;

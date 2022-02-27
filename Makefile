@@ -4,8 +4,8 @@ CXX_FLAG = --std=c++11 -g
 
 all: clean tests ./tests
 
-game: main.o cards.o moreFuncs.o
-	g++ $(CXX_FLAG) -o game main.o cards.o moreFuncs.o
+game: main.o cards.o utility.o
+	g++ $(CXX_FLAG) -o game main.o cards.o utility.o
 
 tests: tests.o cards.o
 	g++ $(CXX_FLAG) -o tests tests.o cards.o
@@ -19,8 +19,8 @@ tests.o: tests.cpp
 cards.o: cards.cpp
 	g++ -c $(CXX_FLAG) cards.cpp
 
-moreFuncs.o: moreFuncs.cpp
-	g++ -c $(CXX_FLAG) moreFuncs.cpp
+utility.o: utility.cpp
+	g++ -c $(CXX_FLAG) utility.cpp
 
 clean:
 	rm -f tests game *.o
